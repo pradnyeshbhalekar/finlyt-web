@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* index.html sets data-theme (light, navy or black) on <html> before the first paint. */
+@custom-variant dark (&:where([data-theme=navy], [data-theme=navy] *, [data-theme=black], [data-theme=black] *));
+
 @theme {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
@@ -25,47 +28,57 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
-/* Dark mode follows the system setting and uses the logo's navy. Phone screens
-   (.theme-light) keep the light palette: they show the app as it looks on a phone. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-paper: #0b1033;
-    --color-paper-2: #151b45;
-    --color-ink: #f4f5fb;
-    --color-ink-2: #d5d9ee;
-    --color-muted: #8c93c8;
-    --color-line: #232a5c;
-    --color-brand: #6680ff; /* lighter, so brand text stays readable on navy */
-    --color-brand-deep: #94a6ff;
-    --color-warn: #fb923c;
-    --color-logo-face: #ffffff;
-    --color-logo-edge: #aebbff;
-    --color-logo-eyes: #3355ff;
-    --color-logo-text: #ffffff;
-    --color-logo-dot: #ffffff;
-  }
+/* Dark backgrounds, picked in the header or taken from the system setting. Navy is the
+   logo's ink; black keeps the same text and logo colours on neutral greys. */
+:root[data-theme="navy"],
+:root[data-theme="black"] {
+  color-scheme: dark;
+  --color-paper: #0b1033;
+  --color-paper-2: #151b45;
+  --color-ink: #f4f5fb;
+  --color-ink-2: #d5d9ee;
+  --color-muted: #8c93c8;
+  --color-line: #232a5c;
+  --color-brand: #6680ff; /* lighter, so brand text stays readable on dark */
+  --color-brand-deep: #94a6ff;
+  --color-warn: #fb923c;
+  --color-logo-face: #ffffff;
+  --color-logo-edge: #aebbff;
+  --color-logo-eyes: #3355ff;
+  --color-logo-text: #ffffff;
+  --color-logo-dot: #ffffff;
+}
+:root[data-theme="black"] {
+  --color-paper: #000000;
+  --color-paper-2: #141414;
+  --color-ink: #f5f5f5;
+  --color-ink-2: #d4d4d4;
+  --color-muted: #a3a3a3;
+  --color-line: #262626;
+}
 
-  .theme-light {
-    color-scheme: light;
-    color: var(--color-ink);
-    --color-paper: #fafaf9;
-    --color-paper-2: #f2f2ef;
-    --color-ink: #111412;
-    --color-ink-2: #2a2f2c;
-    --color-muted: #6b716d;
-    --color-line: #e6e6e2;
-    --color-brand: #3355ff;
-    --color-brand-deep: #2340d9;
-    --color-warn: #c2410c;
-    --color-logo-face: #3355ff;
-    --color-logo-edge: #2440e6;
-    --color-logo-eyes: #ffffff;
-    --color-logo-text: #0b1033;
-    --color-logo-dot: #3355ff;
-  }
+/* Phone screens keep the light palette in every theme: they show the app as it looks
+   on a phone. */
+.theme-light {
+  color-scheme: light;
+  color: var(--color-ink);
+  --color-paper: #fafaf9;
+  --color-paper-2: #f2f2ef;
+  --color-ink: #111412;
+  --color-ink-2: #2a2f2c;
+  --color-muted: #6b716d;
+  --color-line: #e6e6e2;
+  --color-brand: #3355ff;
+  --color-brand-deep: #2340d9;
+  --color-warn: #c2410c;
+  --color-logo-face: #3355ff;
+  --color-logo-edge: #2440e6;
+  --color-logo-eyes: #ffffff;
+  --color-logo-text: #0b1033;
+  --color-logo-dot: #3355ff;
 }
 
 html {

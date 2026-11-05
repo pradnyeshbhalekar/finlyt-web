@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
 import Logo from './Logo'
+import ThemePicker from './ThemePicker'
 
 const LINKS = [
   { href: '#features', label: 'Features' },
@@ -47,6 +48,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <ThemePicker />
           <a
             href="#download"
             className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper transition hover:bg-ink-2 sm:inline-block"
