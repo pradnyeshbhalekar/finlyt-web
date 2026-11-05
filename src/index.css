@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Minimal palette: off-white, ink, one cobalt accent. Change --color-brand to re-theme. */
+  --color-paper: #fafaf9;
+  --color-paper-2: #f2f2ef;
+  --color-ink: #111412;
+  --color-ink-2: #2a2f2c;
+  --color-muted: #6b716d;
+  --color-line: #e6e6e2;
+  --color-brand: #3355ff;
+  --color-brand-deep: #2340d9;
+  --color-warn: #c2410c; /* over budget */
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+/* Subtle scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  transition-delay: var(--d, 0ms);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* While the splash plays, its logo stands in for the header's and lands on it. */
+html[data-splash] [data-splash-target] {
+  visibility: hidden;
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(-4px); }
+}
+.animate-in {
+  animation: enter 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .animate-in { animation: none; }
+}
