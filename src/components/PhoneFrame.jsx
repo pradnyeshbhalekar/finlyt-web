@@ -19,7 +19,7 @@ export default function PhoneFrame({ children, dark = false, time = '6:00', scre
         {/* bezel */}
         <div className="rounded-[2.85rem] bg-black p-[7px] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.06)]">
           {/* screen */}
-          <div className={`relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.45rem] ${screenClass}`}>
+          <div className={`theme-light relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.45rem] ${screenClass}`}>
             {/* status bar */}
             <div className={`relative z-20 flex h-9 shrink-0 items-center justify-between px-6 pt-0.5 text-[11px] font-medium ${fg}`}>
               <span className="tabular-nums">{time}</span>

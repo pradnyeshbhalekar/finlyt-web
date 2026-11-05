@@ -55,7 +55,7 @@ export default function ClaudeImport() {
             <button
               type="button"
               onClick={copy}
-              className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium transition hover:bg-ink hover:text-paper"
+              className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 dark:bg-paper text-xs font-medium transition hover:bg-ink hover:text-paper"
             >
               {copied ? <FiCheck /> : <FiCopy />}
               {copied ? 'Copied' : 'Copy'}

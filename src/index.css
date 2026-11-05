@@ -13,9 +13,59 @@
   --color-line: #e6e6e2;
   --color-brand: #3355ff;
   --color-brand-deep: #2340d9;
-  --color-brand-tint: #aebbff; /* logo: coin rim */
-  --color-brand-ink: #0b1033; /* logo: wordmark */
   --color-warn: #c2410c; /* over budget */
+
+  /* The logo (coin agent + wordmark) on light. Dark mode swaps in the on-dark version. */
+  --color-logo-face: #3355ff;
+  --color-logo-edge: #2440e6;
+  --color-logo-ring: #aebbff;
+  --color-logo-eyes: #ffffff;
+  --color-logo-text: #0b1033;
+  --color-logo-dot: #3355ff;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+/* Dark mode follows the system setting and uses the logo's navy. Phone screens
+   (.theme-light) keep the light palette: they show the app as it looks on a phone. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #0b1033;
+    --color-paper-2: #151b45;
+    --color-ink: #f4f5fb;
+    --color-ink-2: #d5d9ee;
+    --color-muted: #8c93c8;
+    --color-line: #232a5c;
+    --color-brand: #6680ff; /* lighter, so brand text stays readable on navy */
+    --color-brand-deep: #94a6ff;
+    --color-warn: #fb923c;
+    --color-logo-face: #ffffff;
+    --color-logo-edge: #aebbff;
+    --color-logo-eyes: #3355ff;
+    --color-logo-text: #ffffff;
+    --color-logo-dot: #ffffff;
+  }
+
+  .theme-light {
+    color-scheme: light;
+    color: var(--color-ink);
+    --color-paper: #fafaf9;
+    --color-paper-2: #f2f2ef;
+    --color-ink: #111412;
+    --color-ink-2: #2a2f2c;
+    --color-muted: #6b716d;
+    --color-line: #e6e6e2;
+    --color-brand: #3355ff;
+    --color-brand-deep: #2340d9;
+    --color-warn: #c2410c;
+    --color-logo-face: #3355ff;
+    --color-logo-edge: #2440e6;
+    --color-logo-eyes: #ffffff;
+    --color-logo-text: #0b1033;
+    --color-logo-dot: #3355ff;
+  }
 }
 
 html {

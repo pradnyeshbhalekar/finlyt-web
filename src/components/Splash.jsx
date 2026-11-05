@@ -6,10 +6,10 @@ import { LETTER_COUNT, Mark, Wordmark } from './Logo'
 // page fades in. Click, scroll or press a key to fast-forward. Off for reduced motion.
 //
 // The splash draws the same mark and wordmark as the header logo, only bigger (3.5x the
-// 28px header height), so after the flight it lines up exactly with the real one and
+// 24px header height), so after the flight it lines up exactly with the real one and
 // swaps for it.
 
-const HEIGHT = 'min(98px, 21.8vw)'
+const HEIGHT = 'min(84px, 18.7vw)'
 const LETTER_STYLE = { opacity: 0, transformBox: 'fill-box', transformOrigin: '50% 100%' }
 
 // Timeline, in ms from the start

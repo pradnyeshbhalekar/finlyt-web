@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { noCopy } from '../lib/noCopy'
 
-// The Finlyt logo from the logo canvas: the coin agent app icon next to the "finlyt"
-// wordmark (ink letters, brand dot on the i). Pressing a button or link anywhere on the
+// The Finlyt logo from the logo canvas ("no background" board): the coin agent next to
+// the "finlyt" wordmark. Colours come from the --color-logo-* tokens in index.css, which
+// switch to the on-dark version in dark mode. Pressing a button or link anywhere on the
 // page makes the coin hop, excited. With reduced motion it stays still.
 //
-// Both halves are 100 units tall and the wordmark's viewBox includes the gap after the
-// mark, so at any height the lockup is 3.075 times as wide as it is tall.
+// Both halves share a frame 76 units tall and the wordmark's viewBox includes the gap
+// after the coin, so at any height the lockup is 269/76 (about 3.54) times as wide.
 const CLICKABLE = 'button, a[href], summary, [role="button"], input[type="submit"]'
 // Crouch, jump with a stretch, land with a squash, a smaller second hop, settle.
 const HOP = [
@@ -19,16 +20,15 @@ const HOP = [
   { transform: 'translateY(0) scale(1, 1) rotate(0)' },
 ]
 
-// The app icon: a white coin with a tinted rim, rolling at -10°, on a brand square.
+// The coin agent, rolling at -10°, without the app icon's square.
 export function Mark({ ref, eyesRef, style, ...props }) {
   return (
-    <svg ref={ref} viewBox="0 0 100 100" aria-hidden="true" style={{ aspectRatio: '1', ...style }} {...props}>
-      <rect width="100" height="100" rx="24" className="fill-brand" />
+    <svg ref={ref} viewBox="18 12 64 76" aria-hidden="true" style={{ aspectRatio: '64 / 76', ...style }} {...props}>
       <g transform="translate(-1.48 -1.74) rotate(-10 50 52)">
-        <path d="M47 21H56A26 31 0 0 1 56 83H47Z" className="fill-brand-tint" />
-        <ellipse cx="47" cy="52" rx="26" ry="31" fill="#fff" />
-        <ellipse cx="47" cy="52" rx="20" ry="25" fill="none" strokeWidth="3" className="stroke-brand-tint" />
-        <g ref={eyesRef} className="fill-brand" style={{ transformBox: 'fill-box', transformOrigin: 'center' }}>
+        <path d="M47 21H56A26 31 0 0 1 56 83H47Z" className="fill-logo-edge" />
+        <ellipse cx="47" cy="52" rx="26" ry="31" className="fill-logo-face" />
+        <ellipse cx="47" cy="52" rx="20" ry="25" fill="none" strokeWidth="3" className="stroke-logo-ring" />
+        <g ref={eyesRef} className="fill-logo-eyes" style={{ transformBox: 'fill-box', transformOrigin: 'center' }}>
           <ellipse cx="40.5" cy="51" rx="5" ry="7.6" />
           <ellipse cx="53.5" cy="51" rx="5" ry="7.6" />
         </g>
@@ -61,7 +61,7 @@ export const LETTER_COUNT = LETTERS.length
 
 export function Wordmark({ letterRef, letterStyle, style, ...props }) {
   return (
-    <svg viewBox="-21.28 -70.11 207.5 100" aria-hidden="true" style={{ aspectRatio: '207.5 / 100', ...style }} {...props}>
+    <svg viewBox="-17 -58.11 205 76" aria-hidden="true" style={{ aspectRatio: '205 / 76', ...style }} {...props}>
       {LETTERS.map((l, i) => (
         <g
           key={i}
@@ -73,8 +73,8 @@ export function Wordmark({ letterRef, letterStyle, style, ...props }) {
           }
           style={letterStyle}
         >
-          <path d={l.d} className="fill-brand-ink" />
-          {l.dot && <path d={l.dot} className="fill-brand" />}
+          <path d={l.d} className="fill-logo-text" />
+          {l.dot && <path d={l.dot} className="fill-logo-dot" />}
         </g>
       ))}
     </svg>
@@ -82,7 +82,7 @@ export function Wordmark({ letterRef, letterStyle, style, ...props }) {
 }
 
 // `size` is a height class; the width follows from it.
-export default function Logo({ size = 'h-7' }) {
+export default function Logo({ size = 'h-6' }) {
   const markRef = useRef(null)
 
   useEffect(() => {

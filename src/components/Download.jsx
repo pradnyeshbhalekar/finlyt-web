@@ -36,7 +36,10 @@ export default function Download() {
           </p>
 
           <div className="mt-10 hidden items-center gap-5 md:flex">
-            <QRCodeSVG value={absoluteApk} size={88} fgColor="#111412" bgColor="transparent" level="M" />
+            {/* Dark modules on white in dark mode too: not every scanner reads an inverted code. */}
+            <span className="shrink-0 rounded-lg dark:bg-white dark:p-2">
+              <QRCodeSVG value={absoluteApk} size={88} fgColor="#111412" bgColor="transparent" level="M" />
+            </span>
             <p className="max-w-[14rem] text-sm leading-relaxed text-muted">
               On a laptop? Scan this with your phone to download it there.
             </p>
