@@ -13,6 +13,8 @@
   --color-line: #e6e6e2;
   --color-brand: #3355ff;
   --color-brand-deep: #2340d9;
+  --color-brand-tint: #aebbff; /* logo: coin rim */
+  --color-brand-ink: #0b1033; /* logo: wordmark */
   --color-warn: #c2410c; /* over budget */
 }
 

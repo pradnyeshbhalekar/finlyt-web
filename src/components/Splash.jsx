@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
+import { LETTER_COUNT, Mark, Wordmark } from './Logo'
 
 // Intro: the mark pops into the middle of the screen and dances, "finlyt" comes in
 // letter by letter, then the whole logo flies into its place in the header while the
 // page fades in. Click, scroll or press a key to fast-forward. Off for reduced motion.
 //
-// The splash logo keeps the header logo's proportions (mark 28, gap 8, text 18), only
-// bigger, so after the flight it lines up exactly with the real one and swaps for it.
+// The splash draws the same mark and wordmark as the header logo, only bigger (3.5x the
+// 28px header height), so after the flight it lines up exactly with the real one and
+// swaps for it.
 
-const LETTERS = 'finlyt'.split('')
+const HEIGHT = 'min(98px, 21.8vw)'
+const LETTER_STYLE = { opacity: 0, transformBox: 'fill-box', transformOrigin: '50% 100%' }
 
 // Timeline, in ms from the start
 const DANCE_AT = 400
@@ -15,7 +18,7 @@ const SLIDE_AT = 1450 // the mark moves left to make room for the letters
 const LETTERS_AT = 1500
 const LETTER_GAP = 80
 const LETTER_MS = 420
-const LANDED_AT = LETTERS_AT + (LETTERS.length - 1) * LETTER_GAP + LETTER_MS
+const LANDED_AT = LETTERS_AT + (LETTER_COUNT - 1) * LETTER_GAP + LETTER_MS
 const FLY_AT = LANDED_AT + 380
 const FLY_MS = 650
 
@@ -160,41 +163,25 @@ export default function Splash() {
     <div ref={overlayRef} aria-hidden="true" className="fixed inset-0 z-[100] cursor-pointer select-none">
       <div ref={bgRef} className="absolute inset-0 bg-paper" />
       <div className="absolute inset-0 grid place-items-center">
-        <span
-          ref={lockupRef}
-          className="inline-flex items-center font-semibold leading-none tracking-tight text-ink"
-          style={{ fontSize: 'min(63px, 14vw)', gap: 'calc(8em / 18)', transformOrigin: '0 0' }}
-        >
+        <span ref={lockupRef} className="inline-flex" style={{ transformOrigin: '0 0' }}>
           <span ref={slideRef} className="block">
             <span ref={popRef} className="block" style={{ opacity: 0 }}>
-              <svg
+              <Mark
                 ref={danceRef}
-                viewBox="20 22 60 60"
-                className="block overflow-visible"
-                style={{ width: 'calc(28em / 18)', height: 'calc(28em / 18)', transformOrigin: '50% 100%' }}
-              >
-                <g transform="rotate(-8 50 52)">
-                  <rect x="21" y="23" width="58" height="58" rx="26" fill="var(--color-brand)" />
-                  <g ref={eyesRef} style={{ transformBox: 'fill-box', transformOrigin: 'center' }}>
-                    <ellipse cx="56" cy="47" rx="5" ry="8" fill="#fff" />
-                    <ellipse cx="69" cy="47" rx="5" ry="8" fill="#fff" />
-                  </g>
-                </g>
-              </svg>
+                eyesRef={eyesRef}
+                className="block w-auto overflow-visible"
+                style={{ height: HEIGHT, transformOrigin: '50% 100%' }}
+              />
             </span>
           </span>
-          <span className="flex">
-            {LETTERS.map((ch, i) => (
-              <span
-                key={i}
-                ref={(el) => (letterRefs.current[i] = el)}
-                className="inline-block"
-                style={{ opacity: 0, transformOrigin: '50% 100%' }}
-              >
-                {ch}
-              </span>
-            ))}
-          </span>
+          <Wordmark
+            className="block w-auto overflow-visible"
+            style={{ height: HEIGHT }}
+            letterStyle={LETTER_STYLE}
+            letterRef={(el, i) => {
+              letterRefs.current[i] = el
+            }}
+          />
         </span>
       </div>
     </div>

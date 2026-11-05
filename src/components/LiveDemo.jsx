@@ -64,7 +64,7 @@ export default function LiveDemo() {
       <PhoneFrame>
         {/* app bar */}
         <div className="flex shrink-0 items-center justify-between px-5 pt-2">
-          <Logo className="gap-1.5 text-[15px]" markClassName="h-6 w-6" />
+          <Logo size="h-6" />
           <span className="grid h-8 w-8 place-items-center rounded-full text-[15px] text-muted">
             <FiSettings />
           </span>
