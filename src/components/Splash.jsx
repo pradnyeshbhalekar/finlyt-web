@@ -3,7 +3,7 @@ import { LETTER_COUNT, Mark, Wordmark } from './Logo'
 
 // Intro: the mark pops into the middle of the screen and dances, "finlyt" comes in
 // letter by letter, then the whole logo flies into its place in the header while the
-// page fades in. Click, scroll or press a key to fast-forward. Off for reduced motion.
+// page fades in. Always plays at normal speed. Off for reduced motion.
 //
 // The splash draws the same mark and wordmark as the header logo, only bigger (3.5x the
 // 24px header height), so after the flight it lines up exactly with the real one and
@@ -63,7 +63,6 @@ const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)'
 
 export default function Splash() {
   const [show, setShow] = useState(() => !reducedMotion())
-  const overlayRef = useRef(null)
   const bgRef = useRef(null)
   const lockupRef = useRef(null)
   const slideRef = useRef(null)
@@ -84,7 +83,6 @@ export default function Splash() {
       anims.push(a)
       return a
     }
-    const fastForward = () => anims.forEach((a) => a.updatePlaybackRate(5))
 
     const start = async () => {
       // Letter widths depend on the web font, so wait for it, but not for long.
@@ -143,16 +141,9 @@ export default function Splash() {
     }
     start()
 
-    const overlay = overlayRef.current
-    overlay.addEventListener('pointerdown', fastForward)
-    window.addEventListener('keydown', fastForward)
-    window.addEventListener('wheel', fastForward, { passive: true })
     return () => {
       cancelled = true
       anims.forEach((a) => a.cancel())
-      overlay.removeEventListener('pointerdown', fastForward)
-      window.removeEventListener('keydown', fastForward)
-      window.removeEventListener('wheel', fastForward)
       delete root.dataset.splash
     }
   }, [show])
@@ -160,7 +151,7 @@ export default function Splash() {
   if (!show) return null
 
   return (
-    <div ref={overlayRef} aria-hidden="true" className="fixed inset-0 z-[100] cursor-pointer select-none">
+    <div aria-hidden="true" className="fixed inset-0 z-[100] select-none">
       <div ref={bgRef} className="absolute inset-0 bg-paper" />
       <div className="absolute inset-0 grid place-items-center">
         <span ref={lockupRef} className="inline-flex" style={{ transformOrigin: '0 0' }}>
