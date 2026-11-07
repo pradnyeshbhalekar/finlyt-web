@@ -2,10 +2,10 @@
 // Put the APK at public/downloads/finlyt-latest.apk (or point apkUrl at a GitHub release / Drive link).
 export const APP = {
   name: 'Finlyt',
-  version: '1.0.0',
+  version: '0.2.0',
   apkUrl: '/downloads/finlyt-latest.apk',
-  apkSize: '~25 MB',
-  minAndroid: 'Android 8.0+',
+  apkSize: '57 MB',
+  minAndroid: 'Android 7.0+',
   updated: 'Nov 2026',
 }
 
