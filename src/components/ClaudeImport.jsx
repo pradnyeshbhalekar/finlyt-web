@@ -14,7 +14,7 @@ date | amount | description | category | paid_via
 const STEPS = [
   'Copy the prompt from Import in Finlyt.',
   'Send it in your existing Claude chat.',
-  "Paste Claude's reply into Finlyt. It checks for duplicates and saves the entries.",
+  "Paste Claude's reply into Finlyt. It checks for duplicates and saves the entries, and this month's budget or plan if you made one.",
 ]
 
 export default function ClaudeImport() {
@@ -37,7 +37,7 @@ export default function ClaudeImport() {
           <SectionHeading
             eyebrow="Import from Claude"
             title="Bring over what you've already tracked."
-            desc="If you've been logging expenses in a Claude chat, you can move that history into Finlyt."
+            desc="If you've been logging expenses in a Claude chat, you can move that history into Finlyt, along with the plan you made for this month."
           />
           <ol className="mt-8 space-y-3">
             {STEPS.map((s, i) => (

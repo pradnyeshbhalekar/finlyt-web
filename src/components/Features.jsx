@@ -31,7 +31,7 @@ const FEATURES = [
   {
     icon: FiClipboard,
     title: 'Import from an AI chat',
-    desc: 'Been tracking in Claude, ChatGPT or Gemini? Paste the reply into Finlyt and your past days come with you.',
+    desc: 'Been tracking in Claude, ChatGPT or Gemini? Paste the reply into Finlyt and your past days, and this month’s plan, come with you.',
   },
   {
     icon: FiCloud,
