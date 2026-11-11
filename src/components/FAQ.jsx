@@ -11,12 +11,12 @@ const QA = [
     a: 'Chrome warns about every APK that doesn’t come from the Play Store, whatever the app is. Only download Finlyt from this page. You can switch off Install unknown apps for Chrome once it’s installed.',
   },
   {
-    q: 'What does Finlyt read on my phone?',
-    a: 'Only payment alerts from your bank and UPI apps: the amount, merchant and time. Everything else is ignored. You can turn off SMS or notification access at any time in Android settings.',
+    q: 'Does Finlyt read my SMS or bank messages?',
+    a: 'No. Finlyt doesn’t ask for SMS access and never reads your messages. It only knows what you tell it. The microphone is on only after you tap the mic, and notifications are just for your reminders.',
   },
   {
     q: 'Where is my data stored?',
-    a: 'Entries are saved to Finlyt’s cloud database. What you type, plus that payment’s details, is processed by our AI to work out the category and split.',
+    a: 'Entries are saved to Finlyt’s cloud database. What you type or say is processed by our AI to work out the amount, category and split.',
   },
   {
     q: 'Can I change when the reminders come?',
@@ -24,7 +24,7 @@ const QA = [
   },
   {
     q: 'Is there an iPhone version?',
-    a: 'Not right now. Finlyt needs Android’s SMS and notification access to detect payments, and iOS doesn’t allow that.',
+    a: 'Not right now. Finlyt is built and tested for Android only.',
   },
 ]
 

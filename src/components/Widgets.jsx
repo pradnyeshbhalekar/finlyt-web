@@ -8,9 +8,9 @@ import cameraPhoto from '../assets/camera-photo.jpg'
 
 const WIDGETS = [
   { id: 'today', name: 'Today', size: '2×2', desc: "Today's spend against your daily budget." },
-  { id: 'nudge', name: 'Next nudge', size: '2×2', desc: "What's waiting and when the next check-in is." },
-  { id: 'quick', name: 'Quick log', size: '4×1', desc: 'Type or speak an expense from the home screen.' },
-  { id: 'week', name: 'This week', size: '4×2', desc: 'The last seven days, with today highlighted.' },
+  { id: 'nudge', name: 'Next check-in', size: '2×2', desc: 'When the next reminder comes, and whether today is logged.' },
+  { id: 'quick', name: 'Log an expense', size: '4×1', desc: 'Type or speak an expense from the home screen.' },
+  { id: 'week', name: 'Last 7 days', size: '4×2', desc: 'The last seven days, with today highlighted.' },
 ]
 
 const BUDGET = 1500
@@ -165,7 +165,7 @@ function HomeScreen({ active, onSelect }) {
               <div>
                 <p className="text-[19px] font-semibold leading-none tracking-tight">11 PM</p>
                 <p className="mt-1 flex items-center gap-1.5 text-[10px] text-muted">
-                  <i className="h-1.5 w-1.5 rounded-full bg-brand" />3 to log
+                  <i className="h-1.5 w-1.5 rounded-full bg-line" />Logged today
                 </p>
               </div>
             </Tile>
@@ -338,7 +338,7 @@ export default function Widgets() {
           <SectionHeading
             eyebrow="Widgets"
             title="Check your spending from the home screen."
-            desc="See today's spend and what's left to log, or add an expense with one tap."
+            desc="See today's spend against your limit, or add an expense with one tap."
           />
 
           <ul className="mt-10 border-t border-line" onMouseLeave={() => setActive(null)}>
@@ -354,7 +354,7 @@ export default function Widgets() {
                     aria-pressed={on}
                     className="flex w-full items-baseline gap-4 py-3.5 text-left"
                   >
-                    <span className={`w-24 shrink-0 font-medium transition-colors ${on ? 'text-brand' : ''}`}>
+                    <span className={`w-32 shrink-0 font-medium transition-colors ${on ? 'text-brand' : ''}`}>
                       {w.name}
                     </span>
                     <span className="flex-1 text-[14.5px] leading-snug text-muted">{w.desc}</span>

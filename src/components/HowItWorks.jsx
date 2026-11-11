@@ -3,15 +3,15 @@ import SectionHeading from './SectionHeading'
 const STEPS = [
   {
     title: 'Get nudged',
-    desc: 'At the times you set (12, 6 and 11 to start), a notification tells you how many payments are waiting.',
+    desc: 'At the times you set (12, 6 and 11 to start), a notification reminds you to log what you spent.',
   },
   {
-    title: 'Say what it was',
-    desc: 'Each payment is already listed. Type or speak a few words, and add any cash spends the same way.',
+    title: 'Say what you spent',
+    desc: 'Type or speak a few words, like “dmart 1.2k groceries, auto 120”. UPI and cash, all in one go.',
   },
   {
     title: 'Done',
-    desc: 'Our AI turns it into a proper entry, it’s saved, and your widgets update.',
+    desc: 'Our AI turns it into proper entries. Check them, tap Save, and today’s limit and your widgets update.',
   },
 ]
 

@@ -24,8 +24,8 @@ export default function Hero() {
             style={{ '--d': '120ms' }}
             className="mt-6 max-w-md text-lg leading-relaxed text-muted text-pretty"
           >
-            Finlyt reminds you at the times you pick, finds your UPI payments by itself, and lets you
-            log them in plain words.
+            Finlyt reminds you at the times you pick. Type or say what you spent in plain words, and
+            it keeps your month on track.
           </p>
 
           <div

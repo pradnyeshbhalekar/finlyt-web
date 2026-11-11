@@ -1,32 +1,37 @@
-import { FiBell, FiZap, FiMessageCircle, FiClipboard, FiCloud } from 'react-icons/fi'
-import { LuSplit } from 'react-icons/lu'
+import { FiBell, FiMessageCircle, FiClipboard, FiCloud, FiTarget } from 'react-icons/fi'
+import { LuSplit, LuSparkles } from 'react-icons/lu'
 import SectionHeading from './SectionHeading'
 
 const FEATURES = [
   {
     icon: FiBell,
     title: 'Reminders on your schedule',
-    desc: 'Starts with 12 PM, 6 PM and 11 PM. Move them, add more or switch some off. You only get asked about payments you haven’t logged.',
-  },
-  {
-    icon: FiZap,
-    title: 'Payments detected for you',
-    desc: 'Reads payment alerts from your bank and from GPay, PhonePe and Paytm. Amount, merchant and time are filled in already.',
+    desc: 'Starts with 12 PM, 6 PM and 11 PM. Move them, add more or switch some off.',
   },
   {
     icon: FiMessageCircle,
-    title: 'Plain words',
-    desc: 'Type “auto back from office” or “groceries, 200 more in cash”. Our AI works out the category and the split.',
+    title: 'Plain words, typed or said',
+    desc: 'Type or say “chai 40 cash, auto 120”. Our AI works out the amount, the category and how you paid, even in Hinglish.',
   },
   {
     icon: LuSplit,
-    title: 'Half UPI, half cash',
-    desc: 'Paid part on UPI and part in cash? Say so in one sentence and both get logged.',
+    title: 'Splits and paybacks',
+    desc: 'Say “lunch 450 with Rahul, he owes 200”. Only your share counts as spending, and Finlyt remembers what he owes.',
+  },
+  {
+    icon: FiTarget,
+    title: 'A daily limit',
+    desc: 'A short weekly check-in turns your monthly budget into a number for each day. What you don’t spend is saved for surprises.',
+  },
+  {
+    icon: LuSparkles,
+    title: 'Ask about your money',
+    desc: '“Where did my money go this month?” Finlyt answers from your own entries, with a report you can tap through.',
   },
   {
     icon: FiClipboard,
-    title: 'Import from Claude',
-    desc: 'Been tracking in a Claude chat? Paste its export into Finlyt and your past days come with you.',
+    title: 'Import from an AI chat',
+    desc: 'Been tracking in Claude, ChatGPT or Gemini? Paste the reply into Finlyt and your past days come with you.',
   },
   {
     icon: FiCloud,
@@ -42,7 +47,7 @@ export default function Features() {
         <SectionHeading
           eyebrow="Features"
           title="Built for how you actually spend."
-          desc="Most payments go through UPI and some are cash. Finlyt handles both, so all you type is what the money was for."
+          desc="UPI, cash or a bit of both: tell Finlyt what you spent, the way you’d tell a friend, and it does the bookkeeping."
         />
 
         <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
