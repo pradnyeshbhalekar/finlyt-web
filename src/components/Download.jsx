@@ -7,7 +7,7 @@ const INSTALL_STEPS = [
   'Open this page on your Android phone in Chrome and tap Download APK.',
   'Chrome warns about any app that isn’t from the Play Store. Tap Download anyway.',
   'Open the file. If Android asks, allow Chrome to install unknown apps.',
-  'Tap Install, open Finlyt and sign in with Google. Allow notifications so the reminders can reach you.',
+  'Tap Install, open Finlyt and sign in with Google. Allow notifications so the reminders can reach you, and follow the short tour.',
 ]
 
 export default function Download() {

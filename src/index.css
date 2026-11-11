@@ -129,8 +129,30 @@ html[data-splash] [data-splash-target] {
   animation: enter 0.35s ease;
 }
 
+/* The coin at rest, like the app's: normal face for 2.6 s, then a smile with a little hop for 1.5 s. */
+@keyframes coin-eyes-open {
+  0%, 61% { opacity: 1; }
+  64%, 97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes coin-eyes-smile {
+  0%, 61% { opacity: 0; }
+  64%, 97% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes coin-hop {
+  0%, 62% { transform: none; }
+  66% { transform: translateY(-6%) rotate(-7deg) scale(1.06); }
+  71% { transform: translateY(0) rotate(5deg) scale(0.98, 1.02); }
+  76%, 100% { transform: none; }
+}
+.coin-eyes-open { animation: coin-eyes-open 4.1s infinite; }
+.coin-eyes-smile { opacity: 0; animation: coin-eyes-smile 4.1s infinite; }
+.coin-hop { animation: coin-hop 4.1s infinite ease-out; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .animate-in { animation: none; }
+  .coin-hop { animation: none; }
 }

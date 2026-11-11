@@ -20,17 +20,31 @@ const HOP = [
   { transform: 'translateY(0) scale(1, 1) rotate(0)' },
 ]
 
-// The coin agent, rolling at -10°, without the app icon's square.
-export function Mark({ ref, eyesRef, style, ...props }) {
+// The coin agent, rolling at -10°, without the app icon's square. `lively` makes it do what the
+// app's coin does at rest: its normal face, then a smile with a little hop, over and over (the
+// coin-* animations in index.css, on the same 2.6 s + 1.5 s clock as the app).
+export function Mark({ ref, eyesRef, lively = false, style, ...props }) {
   return (
     <svg ref={ref} viewBox="18 12 64 76" aria-hidden="true" style={{ aspectRatio: '64 / 76', ...style }} {...props}>
       <g transform="translate(-1.48 -1.74) rotate(-10 50 52)">
-        <path d="M47 21H56A26 31 0 0 1 56 83H47Z" className="fill-logo-edge" />
-        <ellipse cx="47" cy="52" rx="26" ry="31" className="fill-logo-face" />
-        <ellipse cx="47" cy="52" rx="20" ry="25" fill="none" strokeWidth="3" className="stroke-logo-ring" />
-        <g ref={eyesRef} className="fill-logo-eyes" style={{ transformBox: 'fill-box', transformOrigin: 'center' }}>
-          <ellipse cx="40.5" cy="51" rx="5" ry="7.6" />
-          <ellipse cx="53.5" cy="51" rx="5" ry="7.6" />
+        <g className={lively ? 'coin-hop' : undefined} style={{ transformBox: 'fill-box', transformOrigin: '50% 100%' }}>
+          <path d="M47 21H56A26 31 0 0 1 56 83H47Z" className="fill-logo-edge" />
+          <ellipse cx="47" cy="52" rx="26" ry="31" className="fill-logo-face" />
+          <ellipse cx="47" cy="52" rx="20" ry="25" fill="none" strokeWidth="3" className="stroke-logo-ring" />
+          <g
+            ref={eyesRef}
+            className={`fill-logo-eyes ${lively ? 'coin-eyes-open' : ''}`}
+            style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+          >
+            <ellipse cx="40.5" cy="51" rx="5" ry="7.6" />
+            <ellipse cx="53.5" cy="51" rx="5" ry="7.6" />
+          </g>
+          {lively && (
+            <g className="coin-eyes-smile stroke-logo-eyes" fill="none" strokeWidth="3.4" strokeLinecap="round">
+              <path d="M36.4 53.4Q39.8 45.4 43.2 53.4" />
+              <path d="M50.8 53.4Q54.2 45.4 57.6 53.4" />
+            </g>
+          )}
         </g>
       </g>
     </svg>
@@ -110,6 +124,7 @@ export default function Logo({ size = 'h-6' }) {
     <span {...noCopy} role="img" aria-label="Finlyt" className="inline-flex select-none align-top">
       <Mark
         ref={markRef}
+        lively
         className={`block w-auto shrink-0 overflow-visible ${size}`}
         style={{ transformOrigin: '50% 100%' }}
       />

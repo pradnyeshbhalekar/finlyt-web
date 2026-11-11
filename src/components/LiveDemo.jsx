@@ -1,7 +1,7 @@
 // The app's Home screen, working: type what you spent the way you'd say it, check what Finlyt
 // made of it, and save. Today's total, the bar against today's limit, the month and Owed tiles
-// all follow. Same layout as the app (light theme): no bank SMS, everything is logged by
-// typing or speaking.
+// all follow. Same layout as the app, in the page's theme (light, navy or black, like the app's
+// Light, Ink and Dark). No bank SMS: everything is logged by typing or speaking.
 import { useEffect, useRef, useState } from 'react'
 import {
   LuArrowUp,
@@ -81,7 +81,7 @@ function Entry({ e, onCard = false, showCategory = false }) {
   return (
     <li className="animate-in flex items-center gap-2.5 px-1 py-1.5">
       <span
-        className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[14px] text-muted ${onCard ? 'bg-white' : 'bg-paper-2'}`}
+        className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[14px] text-muted ${onCard ? 'bg-paper' : 'bg-paper-2'}`}
       >
         <Icon />
       </span>
@@ -204,7 +204,7 @@ export default function LiveDemo() {
 
   return (
     <div id="demo">
-      <PhoneFrame time="6:02">
+      <PhoneFrame time="6:02" followTheme screenClass="bg-paper">
         {/* header: the logo, and your photo (Settings) */}
         <div className="flex shrink-0 items-center justify-between px-5 pt-1.5">
           <Logo size="h-5" />
@@ -254,7 +254,7 @@ export default function LiveDemo() {
                   type="button"
                   onClick={edit}
                   aria-label="Discard"
-                  className="grid h-7 w-7 place-items-center rounded-full text-muted transition-colors hover:bg-white"
+                  className="grid h-7 w-7 place-items-center rounded-full text-muted transition-colors hover:bg-paper"
                 >
                   <LuX />
                 </button>
@@ -268,7 +268,7 @@ export default function LiveDemo() {
                 <button
                   type="button"
                   onClick={edit}
-                  className="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-full bg-white text-[12px] font-semibold transition-opacity hover:opacity-80"
+                  className="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-full bg-paper text-[12px] font-semibold transition-opacity hover:opacity-80"
                 >
                   <LuPencil /> Edit
                 </button>
@@ -304,12 +304,12 @@ export default function LiveDemo() {
         <div className="shrink-0 px-3 pt-1">
           {saved && (
             <div role="status" className="animate-in mb-1.5 flex items-center gap-2 rounded-2xl bg-ink py-1.5 pl-3 pr-1.5 text-paper">
-              <Mark className="h-5" />
+              <Mark lively className="h-5" />
               <span className="flex-1 text-[12px] font-medium">{saved.message}</span>
               <button
                 type="button"
                 onClick={undo}
-                className="inline-flex h-7 items-center gap-1 rounded-full px-2.5 text-[12px] font-semibold transition-colors hover:bg-white/10"
+                className="inline-flex h-7 items-center gap-1 rounded-full px-2.5 text-[12px] font-semibold transition-colors hover:bg-paper/10"
               >
                 <LuUndo2 /> Undo
               </button>
@@ -350,7 +350,7 @@ export default function LiveDemo() {
               type="button"
               onClick={fillExample}
               aria-label="Fill in an example"
-              className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[15px] text-muted transition-colors hover:bg-white hover:text-ink"
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[15px] text-muted transition-colors hover:bg-paper hover:text-ink"
             >
               <LuMic />
             </button>

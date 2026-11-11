@@ -1,5 +1,5 @@
 // Background themes. The visitor's pick is saved; until they pick, the system setting
-// decides between light and navy. The inline script in index.html applies the same rule
+// decides between light and black, the same as the app's Auto theme. The inline script in index.html applies the same rule
 // before the first paint, so keep the storage key and ids in sync with it.
 export const THEMES = [
   { id: 'light', label: 'Light', paper: '#fafaf9' },
@@ -10,7 +10,7 @@ export const THEMES = [
 const KEY = 'finlyt-theme'
 const dark = () => window.matchMedia('(prefers-color-scheme: dark)')
 
-export const systemTheme = () => (dark().matches ? 'navy' : 'light')
+export const systemTheme = () => (dark().matches ? 'black' : 'light')
 
 export function savedTheme() {
   try {
